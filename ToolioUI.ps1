@@ -1,14 +1,8 @@
-﻿# Cargar librerías necesarias para la interfaz
-Add-Type -AssemblyName PresentationFramework
+﻿Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName System.Windows.Forms
 
-# Obtener la ruta base del script actual, para ubicar la carpeta checks
 $BasePath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
-# ==========================================
-# Función: Get-SystemInfo
-# Descripción: Recopila información clave del sistema, incluyendo nombre, IP, MAC, modelo y número de serie.
-# ==========================================
 function Get-SystemInfo {
     $computerName = $env:COMPUTERNAME
     $ip = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias 'Ethernet*','Wi-Fi' -ErrorAction SilentlyContinue | Where-Object {$_.IPAddress -ne "127.0.0.1"} | Select-Object -First 1 -ExpandProperty IPAddress)
@@ -24,10 +18,6 @@ function Get-SystemInfo {
     }
 }
 
-# ==========================================
-# Diccionario de rutas a los scripts de checks
-# Descripción: Asocia cada botón con el script correspondiente en la carpeta checks.
-# ==========================================
 $ScriptPaths = @{
     "CheckUsers"       = Join-Path $BasePath "checks\Check_users.ps1"
     "CheckWU"          = Join-Path $BasePath "checks\Check_WU.ps1"
@@ -38,11 +28,6 @@ $ScriptPaths = @{
     "CheckSoftware"    = Join-Path $BasePath "checks\Check_software.ps1"
 }
 
-# ==========================================
-# Función: Run-Script
-# Descripción: Ejecuta el script indicado y muestra el resultado en la interfaz.
-# Da feedback de éxito o error, incluyendo el resultado del script.
-# ==========================================
 function Run-Script {
     param($ScriptPath, $OutputBlock)
     Try {
@@ -57,20 +42,12 @@ function Run-Script {
     }
 }
 
-# ==========================================
-# Definición de la interfaz gráfica en XAML
-# Descripción: Ventana moderna y minimalista con botones para cada chequeo.
-# ==========================================
 $XamlPath = Join-Path $BasePath "Interfaz.xaml"
 [xml]$XAML = Get-Content $XamlPath -Raw
 
-# ==========================================
-# Carga la ventana desde el XAML y enlaza controles
-# ==========================================
 $reader = (New-Object System.Xml.XmlNodeReader $XAML)
 $Window = [Windows.Markup.XamlReader]::Load($reader)
 
-# Enlaza los objetos de la interfaz a variables para su manipulación
 $lblComputerName   = $Window.FindName("lblComputerName")
 $lblIP             = $Window.FindName("lblIP")
 $lblMAC            = $Window.FindName("lblMAC")
@@ -85,9 +62,6 @@ $btnCheckPCName    = $Window.FindName("btnCheckPCName")
 $btnCheckSoftware  = $Window.FindName("btnCheckSoftware")
 $txtOutput         = $Window.FindName("txtOutput")
 
-# ==========================================
-# Muestra la información del sistema al arrancar
-# ==========================================
 $info = Get-SystemInfo
 $lblComputerName.Text = "Nombre: $($info.ComputerName)"
 $lblIP.Text           = "IP: $($info.IP)"
@@ -95,10 +69,6 @@ $lblMAC.Text          = "MAC: $($info.MAC)"
 $lblModel.Text        = "Modelo: $($info.Model)"
 $lblSerial.Text       = "Serie: $($info.Serial)"
 
-# ==========================================
-# Define las acciones de cada botón de chequeo
-# Cada uno ejecuta su script y muestra el resultado
-# ==========================================
 $btnCheckUsers.Add_Click(       { Run-Script -ScriptPath $ScriptPaths.CheckUsers       -OutputBlock $txtOutput })
 $btnCheckWU.Add_Click(          { Run-Script -ScriptPath $ScriptPaths.CheckWU          -OutputBlock $txtOutput })
 $btnCheckCrowdstrike.Add_Click( { Run-Script -ScriptPath $ScriptPaths.CheckCrowdstrike -OutputBlock $txtOutput })
@@ -107,7 +77,4 @@ $btnCheckJava.Add_Click(        { Run-Script -ScriptPath $ScriptPaths.CheckJava 
 $btnCheckPCName.Add_Click(      { Run-Script -ScriptPath $ScriptPaths.CheckPCName      -OutputBlock $txtOutput })
 $btnCheckSoftware.Add_Click(    { Run-Script -ScriptPath $ScriptPaths.CheckSoftware    -OutputBlock $txtOutput })
 
-# ==========================================
-# Muestra la ventana principal de la aplicación
-# ==========================================
 $Window.ShowDialog() | Out-Null
