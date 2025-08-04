@@ -5,11 +5,7 @@ Esta es una pequeña herramienta para el uso del servicio de microinformatica. T
 
 ## Ejecutar programa
 
-Desde un terminal ejecutar:
-
-```bash
-  iwr -useb https://github.com/MRH-T/Toolio/ToolioUI.ps1 | iex
-```
+Descargar repositorio y ejecutar ToolioUI.bat
 
 
 ## Funciones
