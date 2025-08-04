@@ -3,15 +3,33 @@
         Title="Toolio" Height="350" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#688796ff">
 
         <Window.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Width" Value="150"/>
-                <Setter Property="Height" Value="28"/>
-                <Setter Property="Margin" Value="0,5,0,0"/>
-                <Setter Property="Background" Value="#37474f"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                
+            <Style x:Key="BotonRedondeado" TargetType="Button">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#37474f"/>
+            <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    CornerRadius="10" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#546e7a"/> <!-- fondo en hover -->
+                        <Setter Property="Foreground" Value="Black"/> <!-- texto en hover -->
+                    </Trigger>
+                </Style.Triggers>
             </Style>
             <Style TargetType="TextBlock">
                 <Setter Property="Foreground" Value="White"/>
@@ -35,21 +53,19 @@
         <Grid Margin="5">
 
            <Grid.RowDefinitions>
-                <RowDefinition Height="50*"/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                
+                <RowDefinition Height="*"/> 
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 
             </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="3">
                     <StackPanel Margin="5">
                         <TextBlock Text="TOOLIO" Style="{StaticResource Titulo}"/>
                         <Image Source="C:\Users\p-talio-46-vmm\Desktop\Toolio\prueba.png" Width="100"/>
@@ -62,24 +78,20 @@
                         <TextBlock Name="lblSerial" />
                     </StackPanel>
                 </StackPanel>
-
-                <StackPanel Grid.Column="1"  >
-                    <!--<TextBlock Text="Consultar" Style="{StaticResource SubTitulo}"  />-->
-                    <Button Name="btnCheckUsers"
-                        Content="Usuarios locales"/>
-                    <Button Name="btnCheckWU"          
-                        Content="Estado Windows Update"/>
-                    <Button Name="btnCheckCrowdstrike" 
-                        Content="Crowdstrike"/>
-                    <Button Name="btnCheckDominio"  
-                        Content="Dominio"/>
-                    <Button Name="btnCheckJava"        
-                        Content="Java"/>
-                    <Button Name="btnCheckPCName"      
-                        Content="Nombre de equipo"/>
-                    <Button Name="btnCheckSoftware"    
-                        Content="Software instalado"/>
-                </StackPanel>
+                <Button Name="btnCheckUsers" Grid.Row="1" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
+                    Content="Usuarios locales"/>
+                <Button Name="btnCheckWU" Grid.Row="1" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
+                    Content="Estado W.Update"/>
+                <Button Name="btnCheckCrowdstrike" Grid.Row="1" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
+                    Content="Crowdstrike"/>
+                <Button Name="btnCheckDominio" Grid.Row="2" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
+                    Content="Dominio"/>
+                <Button Name="btnCheckJava" Grid.Row="2" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
+                    Content="Java"/>
+                <Button Name="btnCheckPCName" Grid.Row="2" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
+                    Content="Nombre de equipo"/>
+                <Button Name="btnCheckSoftware" Grid.Row="3" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
+                    Content="Software instalado"/>
                 <!--<TextBlock Name="txtOutput" Text="" Margin="0,20,0,0" Foreground="#000000ff" FontFamily="Consolas" FontSize="13" TextWrapping="Wrap"/>-->
 
         </Grid>
