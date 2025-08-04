@@ -61,37 +61,8 @@ function Run-Script {
 # Definición de la interfaz gráfica en XAML
 # Descripción: Ventana moderna y minimalista con botones para cada chequeo.
 # ==========================================
-[xml]$XAML = @"
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-        Title="Toolio" Height="530" Width="420" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#263238">
-    <Grid Margin="10">
-        <Border Background="#2d3748" CornerRadius="15" Padding="10">
-            <StackPanel>
-                <TextBlock Text="TOOLIO" FontWeight="Bold" Foreground="#b0e0e6" FontSize="30" Margin="0,0,0,15" HorizontalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Width="170">
-                        <TextBlock Name="lblComputerName" Margin="0,5" Foreground="White" FontSize="15"/>
-                        <TextBlock Name="lblIP" Margin="0,5" Foreground="White" FontSize="15"/>
-                        <TextBlock Name="lblMAC" Margin="0,5" Foreground="White" FontSize="15"/>
-                        <TextBlock Name="lblModel" Margin="0,5" Foreground="White" FontSize="15"/>
-                        <TextBlock Name="lblSerial" Margin="0,5" Foreground="White" FontSize="15"/>
-                    </StackPanel>
-                    <StackPanel Margin="25,0,0,0">
-                        <Button Name="btnCheckUsers"       Content="Usuarios locales"      Width="180" Height="28" Margin="0,7,0,0" Background="#37474f" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
-                        <Button Name="btnCheckWU"          Content="Estado Windows Update" Width="180" Height="28" Margin="0,7,0,0" Background="#37474f" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
-                        <Button Name="btnCheckCrowdstrike" Content="Crowdstrike"           Width="180" Height="28" Margin="0,7,0,0" Background="#37474f" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
-                        <Button Name="btnCheckDominio"     Content="Dominio"               Width="180" Height="28" Margin="0,7,0,0" Background="#37474f" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
-                        <Button Name="btnCheckJava"        Content="Java"                  Width="180" Height="28" Margin="0,7,0,0" Background="#37474f" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
-                        <Button Name="btnCheckPCName"      Content="Nombre de equipo"      Width="180" Height="28" Margin="0,7,0,0" Background="#37474f" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
-                        <Button Name="btnCheckSoftware"    Content="Software instalado"    Width="180" Height="28" Margin="0,7,0,0" Background="#37474f" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
-                    </StackPanel>
-                </StackPanel>
-                <TextBlock Name="txtOutput" Text="" Margin="0,20,0,0" Foreground="#f56565" FontFamily="Consolas" FontSize="13" TextWrapping="Wrap"/>
-            </StackPanel>
-        </Border>
-    </Grid>
-</Window>
-"@
+$XamlPath = Join-Path $BasePath "Interfaz.xaml"
+[xml]$XAML = Get-Content $XamlPath -Raw
 
 # ==========================================
 # Carga la ventana desde el XAML y enlaza controles
