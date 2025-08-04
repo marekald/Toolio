@@ -1,0 +1,88 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Toolio" Height="350" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#688796ff">
+
+        <Window.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="28"/>
+                <Setter Property="Margin" Value="0,5,0,0"/>
+                <Setter Property="Background" Value="#37474f"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+            <Style x:Key="Titulo" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="#b0e0e6"/>
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="SubTitulo" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="#b0e0e6"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+        </Window.Resources>
+
+    <Border BorderBrush="LightGray" Background="#2d3748" BorderThickness="2" CornerRadius="10" Padding="10" Margin="10">
+        <Grid Margin="5">
+
+           <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                
+            </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="TOOLIO" Style="{StaticResource Titulo}"/>
+                        <Image Source="C:\Users\p-talio-46-vmm\Desktop\Toolio\prueba.png" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Name="lblComputerName"/>
+                        <TextBlock Name="lblIP" />
+                        <TextBlock Name="lblMAC" />
+                        <TextBlock Name="lblModel" />
+                        <TextBlock Name="lblSerial" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"  >
+                    <!--<TextBlock Text="Consultar" Style="{StaticResource SubTitulo}"  />-->
+                    <Button Name="btnCheckUsers"
+                        Content="Usuarios locales"/>
+                    <Button Name="btnCheckWU"          
+                        Content="Estado Windows Update"/>
+                    <Button Name="btnCheckCrowdstrike" 
+                        Content="Crowdstrike"/>
+                    <Button Name="btnCheckDominio"  
+                        Content="Dominio"/>
+                    <Button Name="btnCheckJava"        
+                        Content="Java"/>
+                    <Button Name="btnCheckPCName"      
+                        Content="Nombre de equipo"/>
+                    <Button Name="btnCheckSoftware"    
+                        Content="Software instalado"/>
+                </StackPanel>
+                <!--<TextBlock Name="txtOutput" Text="" Margin="0,20,0,0" Foreground="#000000ff" FontFamily="Consolas" FontSize="13" TextWrapping="Wrap"/>-->
+
+        </Grid>
+    </Border>
+</Window>
+
