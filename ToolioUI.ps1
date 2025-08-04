@@ -5,16 +5,20 @@ $BasePath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 function Get-SystemInfo {
     $computerName = $env:COMPUTERNAME
-    $ip = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias 'Ethernet*','Wi-Fi' -ErrorAction SilentlyContinue | Where-Object {$_.IPAddress -ne "127.0.0.1"} | Select-Object -First 1 -ExpandProperty IPAddress)
-    $mac = (Get-NetAdapter | Where-Object {$_.Status -eq "Up"} | Select-Object -First 1 -ExpandProperty MacAddress)
+    $ip = (Get-NetIPConfiguration | Where-Object { $_.NetProfile.Name -eq "deusto.es"} | Select-Object -ExpandProperty IPv4Address | Select-Object -ExpandProperty IPAddress)
+    $mac = (Get-NetAdapter | Where-Object {$_.Status -eq "Up" -and $_.InterfaceDescription -notmatch "VirtualBox|VMware|Bluetooth"} | Select-Object -First 1 -ExpandProperty MacAddress)
+    $brand = (Get-WmiObject Win32_BIOS).Manufacturer
     $model = (Get-WmiObject Win32_ComputerSystem).Model
     $serial = (Get-WmiObject Win32_BIOS).SerialNumber
+
     return @{
         ComputerName = $computerName
         IP = $ip
         MAC = $mac
+        Brand = $brand
         Model = $model
         Serial = $serial
+        
     }
 }
 
@@ -33,12 +37,12 @@ function Run-Script {
     Try {
         if (Test-Path $ScriptPath) {
             $result = powershell.exe -ExecutionPolicy Bypass -File $ScriptPath 2>&1
-            $OutputBlock.Text = "✅ Éxito:`n$result"
+            $OutputBlock.Text = " Éxito:`n$result"
         } else {
-            $OutputBlock.Text = "❌ Error: Script no encontrado en $ScriptPath"
+            $OutputBlock.Text = " Error: Script no encontrado en $ScriptPath"
         }
     } Catch {
-        $OutputBlock.Text = "❌ Error al ejecutar el script:`n$_"
+        $OutputBlock.Text = " Error al ejecutar el script:`n$_"
     }
 }
 
@@ -48,11 +52,12 @@ $XamlPath = Join-Path $BasePath "Interfaz.xaml"
 $reader = (New-Object System.Xml.XmlNodeReader $XAML)
 $Window = [Windows.Markup.XamlReader]::Load($reader)
 
-$lblComputerName   = $Window.FindName("lblComputerName")
-$lblIP             = $Window.FindName("lblIP")
-$lblMAC            = $Window.FindName("lblMAC")
-$lblModel          = $Window.FindName("lblModel")
-$lblSerial         = $Window.FindName("lblSerial")
+$lblComputerName   = $Window.FindName("ComputerName")
+$lblIP             = $Window.FindName("IP")
+$lblMAC            = $Window.FindName("MAC")
+$lblBrand          = $Window.FindName("Brand")
+$lblModel          = $Window.FindName("Model")
+$lblSerial         = $Window.FindName("Serial")
 $btnCheckUsers     = $Window.FindName("btnCheckUsers")
 $btnCheckWU        = $Window.FindName("btnCheckWU")
 $btnCheckCrowdstrike = $Window.FindName("btnCheckCrowdstrike")
@@ -66,6 +71,7 @@ $info = Get-SystemInfo
 $lblComputerName.Text = "Nombre: $($info.ComputerName)"
 $lblIP.Text           = "IP: $($info.IP)"
 $lblMAC.Text          = "MAC: $($info.MAC)"
+$lblBrand.Text        = "Marca: $($info.Brand)"
 $lblModel.Text        = "Modelo: $($info.Model)"
 $lblSerial.Text       = "Serie: $($info.Serial)"
 
