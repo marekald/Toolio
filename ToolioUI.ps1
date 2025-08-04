@@ -11,7 +11,7 @@ $BasePath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 # ==========================================
 function Get-SystemInfo {
     $computerName = $env:COMPUTERNAME
-    $ip = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias 'Ethernet','Wi-Fi' -ErrorAction SilentlyContinue | Where-Object {$_.IPAddress -ne "127.0.0.1"} | Select-Object -First 1 -ExpandProperty IPAddress)
+    $ip = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias 'Ethernet*','Wi-Fi' -ErrorAction SilentlyContinue | Where-Object {$_.IPAddress -ne "127.0.0.1"} | Select-Object -First 1 -ExpandProperty IPAddress)
     $mac = (Get-NetAdapter | Where-Object {$_.Status -eq "Up"} | Select-Object -First 1 -ExpandProperty MacAddress)
     $model = (Get-WmiObject Win32_ComputerSystem).Model
     $serial = (Get-WmiObject Win32_BIOS).SerialNumber
