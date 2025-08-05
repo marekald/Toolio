@@ -14,5 +14,15 @@ Descargar repositorio y ejecutar ToolioUI.bat
 - Comprobar y arreglar el javapath automaticamente.
 - Comprobar actualizaciones de Windows pendientes.
 - Comprobar si hay usuarios locales que no permitimos.
-- Comprobar si Crowdstrike está funcionando correctamente.
-- Comprobar si hay software no deseado y desinstalarlo.
+- Comprobar si Crowdstrike está corriendo.
+- Comprobar si hay software no deseado y desinstalarlo. ````diff - ahora mismo no funciona ```
+
+
+## Tareas Pendientes
+
+- Eduroam
+- Actualizar cliente SCCM
+- Cambiar nombre
+- Cambiar dominio
+- Borrar cache y cookies de chrome/firefox/edge
+- Actualizar windows automaticamente

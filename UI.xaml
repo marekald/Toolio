@@ -1,6 +1,6 @@
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Toolio" Height="400" Width="600" WindowStartupLocation="CenterScreen" Background="#688796ff">
+        Title="Toolio (Beta)" Height="550" Width="650" WindowStartupLocation="CenterScreen" Background="#688796ff">
 
         <Window.Resources>
             <Style x:Key="BotonRedondeado" TargetType="Button">
@@ -14,20 +14,17 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" 
-                                    CornerRadius="10" 
-                                    BorderThickness="{TemplateBinding BorderThickness}" 
-                                    BorderBrush="{TemplateBinding BorderBrush}">
-                                <ContentPresenter HorizontalAlignment="Center" 
-                                                VerticalAlignment="Center"/>
+                            <Border Background="{TemplateBinding Background}" CornerRadius="10"
+                                BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#546e7a"/> <!-- fondo en hover -->
-                        <Setter Property="Foreground" Value="Black"/> <!-- texto en hover -->
+                        <Setter Property="Background" Value="#546e7a"/>
+                        <Setter Property="Foreground" Value="Black"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -52,33 +49,32 @@
 
     <Border BorderBrush="LightGray" Background="#2d3748" BorderThickness="2" CornerRadius="10" Padding="10" Margin="10">
         <Grid Margin="5">
-
            <Grid.RowDefinitions>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/> 
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/> 
             </Grid.RowDefinitions>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                
             </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Grid.Row="0" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="2">
-                    <TextBox Name="ComputerName" />
-                    <TextBox Name="IP" />
-                    <TextBox Name="MAC" />
-                    <TextBox Name="Brand" />
-                    <TextBox Name="Model" />
-                    <TextBox Name="Serial" />
-                </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="0" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left" >
-                    <TextBlock Text="TOOLIO" Style="{StaticResource Titulo}"/>
-                <TextBlock FontFamily="Consolas" FontSize="1" Foreground="Pink" 
-                            Margin="0,0,0,5" HorizontalAlignment="Center" 
-                            xml:space="preserve" TextAlignment="Center">
+            <StackPanel Grid.Column="0" Grid.Row="0" Margin="10" VerticalAlignment="Top"
+                HorizontalAlignment="Center" Grid.ColumnSpan="2">
+                <TextBox Name="ComputerName" />
+                <TextBox Name="Domain" />
+                <TextBox Name="IP" />
+                <TextBox Name="MAC" />
+                <TextBox Name="Brand" />
+                <TextBox Name="Model" />
+                <TextBox Name="Serial" />
+            </StackPanel>
+            <StackPanel Grid.Column="2" Grid.Row="0" Margin="0" VerticalAlignment="Top">
+                <TextBlock Text="TOOLIO" Style="{StaticResource Titulo}"/>
+                <TextBlock FontFamily="Consolas" FontSize="1.5" Foreground="Pink" Margin="0" HorizontalAlignment="Center" 
+                        xml:space="preserve" TextAlignment="Center" TextWrapping="NoWrap">
                                                           @@@                                                             
                                                             @@@@                                              @@@@@@@@@@#*
                                                               @@@@@                                     @@@@@@@@@@        
@@ -152,26 +148,28 @@
                                  @@%%%%%%%%%@@@@@@@@@@@@@@@@                    @#+++*#*##%%@%%%%%%@%%%%@@@@              
                                   @@@@@@@%%@@@@@@@@@@@@@@@                       @@#*+%+****%#####%@%%@@@%                
                                           @@###%@@@                                  %@@%#**%####%@@@%                    
-
-
-                </TextBlock>
-                </StackPanel>
-                <Button Name="btnCheckUsers" Grid.Row="1" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
-                    Content="Usuarios locales"/>
-                <Button Name="btnCheckWU" Grid.Row="1" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
-                    Content="Estado W.Update"/>
-                <Button Name="btnCheckCrowdstrike" Grid.Row="1" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
-                    Content="Crowdstrike"/>
-                <Button Name="btnCheckDominio" Grid.Row="2" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
-                    Content="Dominio"/>
-                <Button Name="btnCheckJava" Grid.Row="2" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
-                    Content="Java"/>
-                <Button Name="btnCheckPCName" Grid.Row="2" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
-                    Content="Nombre de equipo"/>
-                <Button Name="btnCheckSoftware" Grid.Row="3" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
-                    Content="Software instalado"/>
-                <!--<TextBlock Name="txtOutput" Text="" Margin="0,20,0,0" Foreground="#000000ff" FontFamily="Consolas" FontSize="13" TextWrapping="Wrap"/>-->
-
+            </TextBlock>
+            </StackPanel>
+            <Button Name="btnCheckUsers" Grid.Row="1" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
+                Content="Usuarios locales"/>
+            <Button Name="btnCheckWU" Grid.Row="1" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
+                Content="Estado W.Update"/>
+            <Button Name="btnCheckCrowdstrike" Grid.Row="1" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
+                Content="Crowdstrike"/>
+            <Button Name="btnCheckJava" Grid.Row="2" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
+                Content="Java"/>
+            <Button Name="btnCheckSoftware" Grid.Row="2" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
+                Content="Software instalado"/>
+            <Button Name="NoConfigurado" Grid.Row="2" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
+                Content="NoConfigurado"/>
+            <Button Name="NoConfigurado2" Grid.Row="3" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
+                Content="NoConfigurado2"/>
+            <Button Name="NoConfigurado3" Grid.Row="3" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
+                Content="NoConfigurado3"/>
+            <Button Name="NoConfigurado4" Grid.Row="3" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
+                Content="NoConfigurado4"/>
+            <TextBox Name="txtOutput" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Height="80" Margin="5"
+                VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
         </Grid>
     </Border>
 </Window>
