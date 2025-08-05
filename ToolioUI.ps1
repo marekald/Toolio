@@ -23,13 +23,13 @@ function Get-SystemInfo {
 }
 
 $ScriptPaths = @{
-    "CheckUsers"       = Join-Path $BasePath "checks\Check_users.ps1"
-    "CheckWU"          = Join-Path $BasePath "checks\Check_WU.ps1"
-    "CheckCrowdstrike" = Join-Path $BasePath "checks\Check_Crowdstrike.ps1"
-    "CheckDominio"     = Join-Path $BasePath "checks\Check_Dominio.ps1"
-    "CheckJava"        = Join-Path $BasePath "checks\Check_Java.ps1"
-    "CheckPCName"      = Join-Path $BasePath "checks\Check_PCName.ps1"
-    "CheckSoftware"    = Join-Path $BasePath "checks\Check_software.ps1"
+    "CheckUsers"       = Join-Path $BasePath "checks\check_users.ps1"
+    "CheckWU"          = Join-Path $BasePath "checks\check_WU.ps1"
+    "CheckCrowdstrike" = Join-Path $BasePath "checks\check_Crowdstrike.ps1"
+    "CheckDominio"     = Join-Path $BasePath "checks\check_Dominio.ps1"
+    "CheckJava"        = Join-Path $BasePath "checks\check_Java.ps1"
+    "CheckPCName"      = Join-Path $BasePath "checks\check_PCName.ps1"
+    "CheckSoftware"    = Join-Path $BasePath "checks\check_software.ps1"
 }
 
 function Run-Script {
