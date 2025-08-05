@@ -33,6 +33,7 @@ $ScriptPaths = @{
 
 function Invoke-Script {
     param($ScriptPath, $OutputBlock)
+	$OutputBlock.Foreground = 'White'
 	$OutputBlock.Text = "Ejecutando... $ScriptPath"
 	[System.Windows.Forms.Application]::DoEvents() # Fuerza refresco de la UI
 	Try {
