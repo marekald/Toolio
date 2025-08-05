@@ -1,6 +1,6 @@
 # Toolio
 
-Esta es una pequeña herramienta para el uso del servicio de microinformatica. Tiene como objetivo realizar comprobaciónes y reparaciones para problemas comunes.
+Esta es una pequeña herramienta para arreglar problemas comunes de mi trabajo y el de mis compañeros. Tiene como objetivo realizar comprobaciónes y reparaciones para problemas comunes.
 
 
 ## Ejecutar programa
@@ -15,7 +15,7 @@ Descargar repositorio y ejecutar ToolioUI.bat
 - Comprobar actualizaciones de Windows pendientes.
 - Comprobar si hay usuarios locales que no permitimos.
 - Comprobar si Crowdstrike está corriendo.
-- Comprobar si hay software no deseado y desinstalarlo. ````diff - ahora mismo no funciona ```
+- Comprobar si hay software no deseado y desinstalarlo.
 
 
 ## Tareas Pendientes
