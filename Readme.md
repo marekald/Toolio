@@ -1,6 +1,6 @@
 # Toolio
 
-Esta es una pequeña herramienta para el uso del servicio de microinformatica. Tiene como objetivo realizar comprobaciónes y reparaciones para problemas comunes.
+Esta es una pequeña herramienta para arreglar problemas comunes de mi trabajo y el de mis compañeros. Tiene como objetivo realizar comprobaciónes y reparaciones para problemas comunes.
 
 
 ## Ejecutar programa
