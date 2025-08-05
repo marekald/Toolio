@@ -15,7 +15,7 @@ Descargar repositorio y ejecutar ToolioUI.bat
 - Comprobar actualizaciones de Windows pendientes.
 - Comprobar si hay usuarios locales que no permitimos.
 - Comprobar si Crowdstrike está corriendo.
-- Comprobar si hay software no deseado y desinstalarlo. ````diff - ahora mismo no funciona ```
+- Comprobar si hay software no deseado y desinstalarlo.
 
 
 ## Tareas Pendientes
