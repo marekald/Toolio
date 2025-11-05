@@ -150,24 +150,15 @@
                                           @@###%@@@                                  %@@%#**%####%@@@%                    
             </TextBlock>
             </StackPanel>
-            <Button Name="btnCheckUsers" Grid.Row="1" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
-                Content="Usuarios locales"/>
-            <Button Name="btnCheckWU" Grid.Row="1" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
-                Content="Estado W.Update"/>
-            <Button Name="btnCheckCrowdstrike" Grid.Row="1" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
-                Content="Crowdstrike"/>
-            <Button Name="btnCheckJava" Grid.Row="2" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
-                Content="Java"/>
-            <Button Name="btnCheckSoftware" Grid.Row="2" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
-                Content="Software instalado"/>
-            <Button Name="NoConfigurado" Grid.Row="2" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
-                Content="NoConfigurado"/>
-            <Button Name="NoConfigurado2" Grid.Row="3" Grid.Column="0" Style="{StaticResource BotonRedondeado}"
-                Content="NoConfigurado2"/>
-            <Button Name="NoConfigurado3" Grid.Row="3" Grid.Column="1" Style="{StaticResource BotonRedondeado}"
-                Content="NoConfigurado3"/>
-            <Button Name="NoConfigurado4" Grid.Row="3" Grid.Column="2" Style="{StaticResource BotonRedondeado}"
-                Content="NoConfigurado4"/>
+            <Button Name="btnCheckUsers" Grid.Row="1" Grid.Column="0" Style="{StaticResource BotonRedondeado}" Content="Usuarios locales"/>
+            <Button Name="btnCheckWU" Grid.Row="1" Grid.Column="1" Style="{StaticResource BotonRedondeado}" Content="Estado W.Update"/>
+            <Button Name="btnCheckCrowdstrike" Grid.Row="1" Grid.Column="2" Style="{StaticResource BotonRedondeado}" Content="Crowdstrike"/>
+            <Button Name="btnCheckJava" Grid.Row="2" Grid.Column="0" Style="{StaticResource BotonRedondeado}" Content="Java"/>
+            <Button Name="btnCheckSoftware" Grid.Row="2" Grid.Column="1" Style="{StaticResource BotonRedondeado}" Content="Software instalado"/>
+            <Button Name="NoConfigurado" Grid.Row="2" Grid.Column="2" Style="{StaticResource BotonRedondeado}" Content="NoConfigurado"/>
+            <Button Name="NoConfigurado2" Grid.Row="3" Grid.Column="0" Style="{StaticResource BotonRedondeado}" Content="NoConfigurado2"/>
+            <Button Name="NoConfigurado3" Grid.Row="3" Grid.Column="1" Style="{StaticResource BotonRedondeado}" Content="NoConfigurado3"/>
+            <Button Name="NoConfigurado4" Grid.Row="3" Grid.Column="2" Style="{StaticResource BotonRedondeado}" Content="NoConfigurado4"/>
             <TextBox Name="txtOutput" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Height="80" Margin="5"
                 VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"/>
         </Grid>
